@@ -1,6 +1,8 @@
 package com.umutakpinar.recyclerviewdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         people.add(new Person("Kevin","Cyber Security Expert - Python Developer",R.drawable.kevin));
         people.add(new Person("Steve","Backend Developer & Software Architect",R.drawable.steve));
 
-
-
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        PersonAdapter personAdapter = new PersonAdapter(people);
+        binding.recyclerView.setAdapter(personAdapter);
     }
 }
