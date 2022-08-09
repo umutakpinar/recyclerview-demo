@@ -2,6 +2,7 @@ package com.umutakpinar.recyclerviewdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,5 +20,11 @@ public class DetailsActivity extends AppCompatActivity {
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Intent intent = getIntent();
+        Person person = (Person) intent.getSerializableExtra("person");
+        binding.textViewHeader.setText(person.name);
+        binding.textViewInfo.setText(person.info);
+        binding.imageView.setImageResource(person.image);
     }
 }

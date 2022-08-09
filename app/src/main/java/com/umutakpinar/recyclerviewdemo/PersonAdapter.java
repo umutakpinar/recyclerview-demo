@@ -1,5 +1,6 @@
 package com.umutakpinar.recyclerviewdemo;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonAdap
     @Override
     public void onBindViewHolder(@NonNull PersonAdapterVH holder, int position) {
         holder.binding.recyylerViewTextView.setText(personArrayList.get(position).name);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(),DetailsActivity.class);
+                intent.putExtra("person",personArrayList.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
